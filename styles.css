@@ -1,0 +1,54 @@
+/* Custom CSS styles */
+/* static/css/styles.css */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    background: #f8f9fa;
+}
+
+.card {
+    border-radius: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: none;
+    margin-bottom: 20px;
+    transition: box-shadow 0.2s;
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+    padding: 15px;
+}
+
+.card:hover {
+    box-shadow: 0 4px 24px rgba(44,62,80,0.10), 0 1.5px 4px rgba(44,62,80,0.08);
+}
+
+.btn-primary, .btn-success, .btn-secondary {
+    border-radius: 0.5rem;
+    font-weight: 500;
+}
+
+.job-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.display-4 {
+    letter-spacing: 1px;
+}
+
+.navbar {
+    border-radius: 0 0 1rem 1rem;
+}
+
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+}

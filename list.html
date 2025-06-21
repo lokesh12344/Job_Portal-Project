@@ -1,0 +1,67 @@
+<!-- Job listings -->
+<!-- templates/jobs/list.html -->
+{% extends 'base.html' %}
+
+{% block title %}Jobs - Job Portal{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Job Listings</h1>
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5 class="mb-0">Filter Jobs</h5>
+            </div>
+            <div class="card-body">
+                <form action="{{ url_for('jobs') }}" method="GET">
+                    <div class="mb-3">
+                        <label for="category" class="form-label">Category</label>
+                        <select class="form-select" id="category" name="category">
+                            <option value="">All Categories</option>
+                            <option value="IT">IT & Software</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="Design">Design</option>
+                            <option value="Sales">Sales</option>
+                            <option value="Finance">Finance</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" class="form-control" id="location" name="location">
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Apply Filters</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        {% if jobs %}
+            <div class="row">
+                {% for job in jobs %}
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ job.title }}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">{{ job.company }}</h6>
+                                <p class="card-text">{{ job.description[:100] }}...</p>
+                                <div class="d-flex justify-content-between">
+                                    <span class="badge bg-light text-dark">{{ job.location }}</span>
+                                    <span class="badge bg-light text-dark">{{ job.category }}</span>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <a href="{{ url_for('job_detail', job_id=job.id) }}" class="btn btn-outline-primary">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No jobs found. Try adjusting your filters.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

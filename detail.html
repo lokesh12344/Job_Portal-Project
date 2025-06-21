@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2>{{ job.title }}</h2>
+    <p><strong>Description:</strong> {{ job.description }}</p>
+    <p><strong>Location:</strong> {{ job.location }}</p>
+    <p><strong>Salary:</strong> {{ job.salary }}</p>
+    <p><strong>Posted by:</strong> {{ job.employer_name }}</p>
+    {% if session.get('role') == 'seeker' %}
+        <a href="/jobs/apply/{{ job.id }}" class="btn btn-primary">Apply Now</a>
+    {% endif %}
+</div>
+{% endblock %}

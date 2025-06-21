@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Remote Jobs - Job Portal{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="my-4">Latest Remote Jobs</h1>
+    
+    {% if jobs %}
+        <div class="list-group">
+            {% for job in jobs %}
+                <a href="{{ job.url }}" target="_blank" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{ job.jobTitle }}</h5>
+                        <small>{{ job.pubDate }}</small>
+                    </div>
+                    <p class="mb-1">Company: {{ job.companyName }}</p>
+                    <small>Location: {{ job.jobGeo }} | Industry: {{ job.jobIndustry }} | Type: {{ job.jobType }}</small>
+                </a>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-warning">No remote jobs found at the moment. Please try again later.</div>
+    {% endif %}
+</div>
+{% endblock %}

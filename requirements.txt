@@ -1,0 +1,7 @@
+flask
+requests
+sqlite3
+jinja2
+itsdangerous
+click
+markupsafe

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2>Employer Dashboard</h2>
+    <a href="/jobs/create" class="btn btn-primary mb-3">Post a New Job</a>
+    <h4>Your Job Listings</h4>
+    <ul class="list-group mt-3">
+        <!-- Example: Loop through employer's jobs -->
+        {% for job in jobs %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <a href="/jobs/detail/{{ job.id }}">{{ job.title }}</a>
+            <span>{{ job.status }}</span>
+        </li>
+        {% else %}
+        <li class="list-group-item">No jobs posted yet.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

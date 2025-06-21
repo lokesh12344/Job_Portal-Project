@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2>Job Seeker Dashboard</h2>
+    <a href="/jobs/list" class="btn btn-success mb-3">Browse Jobs</a>
+    <h4>Your Applications</h4>
+    <ul class="list-group mt-3">
+        <!-- Example: Loop through seeker's applications -->
+        {% for application in applications %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <a href="/jobs/detail/{{ application.job_id }}">{{ application.job_title }}</a>
+            <span>Status: {{ application.status }}</span>
+        </li>
+        {% else %}
+        <li class="list-group-item">No applications yet.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
